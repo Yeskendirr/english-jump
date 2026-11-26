@@ -211,8 +211,6 @@ footer {
   color: #9aa4b6;
 }
 
-footer a { color: #cfd6e3; }
-
 @media (max-width: 640px) {
   .logo { display: none; }
   .stat { font-size: 11px; padding: 3px 8px; }
