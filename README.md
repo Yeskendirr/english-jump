@@ -1,28 +1,43 @@
-Javascript Tiny-Platformer
-==========================
+English Jump
+============
 
-A very minimal javascript platform game
+Небольшая 2D-игра для изучения английских слов. Персонаж прыгает по платформам
+и собирает английское слово, которое переводит русское задание вверху экрана.
 
- * [play the game](https://jakesgordon.com/games/tiny-platformer/)
- * read the [original article](https://jakesgordon.com/writing/tiny-platformer/)
- * read a [follow up article](https://jakesgordon.com/writing/tiny-platformer-revisited/) about adding monsters and treasure
- * view the [source](https://github.com/jakesgordon/javascript-tiny-platformer)
+ * 3 уровня: **Animals**, **Food**, **School** — по 5 заданий
+ * верный ответ — +10 очков, ошибка — −1 жизнь (всего 3 жизни)
+ * после уровня — итоги и кнопка **Next Level**, в конце — финальный экран
 
-Just a sinple example of how to have a tiny rectangle run around some rectangle platforms, 
-collecting rectangular gold and avoiding rectangular monsters.
+Играть онлайн: **https://yeskendirr.github.io/english-jump/**
 
-SUPPORTED BROWSERS
-==================
+Как запустить
+-------------
 
-Should work in any modern browser with canvas support
+Открыть `index.html` в браузере — сервер не нужен.
 
-DEVELOPMENT
-===========
+Управление: `←` `→` или `A` `D` — бег, `Space` (или `↑`, `W`) — прыжок, `Enter` — нажать кнопку на экране.
 
-The game is 100% client side javascript, html and css. It should run when served up by any web server.
+Файлы
+-----
 
-License
-=======
+ * `index.html` — разметка: HUD, баннер задания, экраны меню и итогов
+ * `style.css` — оформление
+ * `levels.js` — уровни: слова (русский → английский), цвета и карты платформ
+ * `platformer.js` — физика платформера, логика заданий и отрисовка
+ * `English Jump.pptx` — презентация об игре
 
-[MIT](http://en.wikipedia.org/wiki/MIT_License) license.
+Чтобы поменять слова или карту, достаточно отредактировать `levels.js`.
+В карте `#` — блок, `P` — старт игрока, `W` — место, где может появиться карточка со словом
+(на карте нужно минимум 3 таких места).
 
+Автор оригинала
+---------------
+
+Игра основана на [javascript-tiny-platformer](https://github.com/jakesgordon/javascript-tiny-platformer)
+от Jake Gordon ([статья](https://jakesgordon.com/writing/tiny-platformer/)).
+Физика движения, прыжков и столкновений с платформами взята из оригинала без изменений.
+
+Лицензия
+--------
+
+[MIT](http://en.wikipedia.org/wiki/MIT_License) — см. файл `LICENSE`.
