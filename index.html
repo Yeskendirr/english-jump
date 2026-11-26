@@ -1,42 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-  <title>Javascript Platformer</title>
-
-  <style>
-    body            { background: #111; }
-    #platformer     { margin: 1em auto; position: relative; width: 512px; height: 384px; }
-    #canvas         { display: inline-block; width: 100%; height: 100%; }
-    #instructions   { font-style: italic; color: #999; font-size: 9pt; margin-left: 1em; margin-top: 0.5em; }
-    #instructions b { color: #DDD; }
-    @media screen and (min-width:     0px) and (min-height:    0px) { #platformer { width:  512px; height: 384px; font-size:  7pt; } } /* block = 16 */
-    @media screen and (min-width:   840px) and (min-height:  530px) { #platformer { width:  640px; height: 480px; font-size:  9pt; } } /* block = 20 */
-    @media screen and (min-width:   968px) and (min-height:  626px) { #platformer { width:  768px; height: 576px; font-size: 11pt; } } /* block = 24 */
-    @media screen and (min-width:  1096px) and (min-height:  722px) { #platformer { width:  896px; height: 672px; font-size: 13pt; } } /* block = 28 */
-    @media screen and (min-width:  1224px) and (min-height:  818px) { #platformer { width: 1024px; height: 768px; font-size: 15pt; } } /* block = 32 */
-  </style>
-
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>English Jump</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
-  <div id="platformer">
+  <main id="game">
 
-    <canvas id="canvas">
-      <div class="unsupported">
-        Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
-      </div>
-    </canvas>
+    <header id="hud">
+      <div class="logo">English <span>Jump</span></div>
+      <div class="stat">Level <b id="hud-level">1</b></div>
+      <div class="stat">Task <b id="hud-task">1 / 5</b></div>
+      <div class="stat">Score <b id="hud-score">0</b></div>
+      <div class="stat">Lives <b id="hud-lives" class="lives">♥♥♥</b></div>
+    </header>
 
-    <div id="instructions">
-      <b>LEFT/RIGHT</b> to move, <b>SPACE</b> to jump, collect gold and jump on monsters.
+    <div id="stage">
+      <canvas id="canvas">Ваш браузер не поддерживает &lt;canvas&gt;</canvas>
+
+      <div id="banner" class="hidden"></div>
+
+      <section id="menu" class="screen">
+        <div class="card">
+          <h1>English <span>Jump</span></h1>
+          <p class="subtitle">Прыгай по платформам и собирай английские слова!</p>
+          <ul class="rules">
+            <li><kbd>←</kbd> <kbd>→</kbd> или <kbd>A</kbd> <kbd>D</kbd> — бежать, <kbd>Space</kbd> — прыгать</li>
+            <li>Найди на платформах перевод русского слова</li>
+            <li>Верный ответ — <b>+10 очков</b>, ошибка — <b>−1 жизнь</b></li>
+            <li>3 уровня: Animals, Food, School — по 5 заданий</li>
+          </ul>
+          <button id="play-button">Play</button>
+        </div>
+      </section>
+
+      <section id="result" class="screen hidden">
+        <div class="card">
+          <h2 id="result-title">Level complete!</h2>
+          <p class="subtitle" id="result-name"></p>
+          <div class="numbers">
+            <div><small>Правильно</small><b id="result-correct"></b></div>
+            <div><small>Очки</small><b id="result-score"></b></div>
+          </div>
+          <ul class="words" id="result-words"></ul>
+          <button id="next-button">Next Level</button>
+        </div>
+      </section>
+
+      <section id="gameover" class="screen hidden">
+        <div class="card">
+          <h2 class="bad">Game Over</h2>
+          <p class="subtitle">Жизни закончились — попробуй ещё раз!</p>
+          <div class="numbers">
+            <div><small>Уровень</small><b id="over-level"></b></div>
+            <div><small>Очки</small><b id="over-score"></b></div>
+          </div>
+          <button id="retry-button">Try Again</button>
+        </div>
+      </section>
+
+      <section id="final" class="screen hidden">
+        <div class="card">
+          <h2>Congratulations!</h2>
+          <div class="stars" id="final-stars">★★★</div>
+          <p class="subtitle" id="final-message"></p>
+          <div class="numbers">
+            <div><small>Правильно</small><b id="final-correct"></b></div>
+            <div><small>Очки</small><b id="final-score"></b></div>
+          </div>
+          <button id="again-button">Play Again</button>
+        </div>
+      </section>
     </div>
 
-  </div>
+    <footer>
+      Основано на <a href="https://github.com/jakesgordon/javascript-tiny-platformer">javascript-tiny-platformer</a>
+      от Jake Gordon · лицензия MIT
+    </footer>
 
-  <script src="fpsmeter.min.js"></script>
+  </main>
+
+  <script src="levels.js"></script>
   <script src="platformer.js"></script>
 
 </body>
